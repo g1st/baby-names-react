@@ -4,7 +4,7 @@ import DisplayName from './DisplayName';
 const Favourites = ({ favourites, handleClick }) => {
   return (
     <>
-      <h2 className="favourite-title">Favourites:</h2>
+      <h2 className="favourite-title">Favourite names</h2>
       <ul className="baby-names">
         {favourites.length > 0 ? (
           favourites.map(({ id, name, sex }) => (
@@ -20,7 +20,6 @@ const Favourites = ({ favourites, handleClick }) => {
           <span>Click on a name to add to favourites.</span>
         )}
       </ul>
-      <hr />
     </>
   );
 };

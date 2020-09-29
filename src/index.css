@@ -12,14 +12,17 @@ code {
     monospace;
 }
 
+hr {
+  margin-bottom: 1rem;
+}
+
 .App {
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .baby-names {
-  margin: 0;
-  padding: 3rem 0;
+  margin-bottom: 3rem;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -72,21 +75,23 @@ code {
   justify-content: center;
 }
 
-.filter-buttons {
+.btn-group {
   display: flex;
+  justify-content: center;
 }
 
-.filter-button {
+.btn {
   margin: 0 .25rem;
-  padding: 0 1rem;
+  padding: 0.5em 1em;
 }
 
-.filter-button:hover,
-.filter-button:active {
+.btn:hover,
+.btn:active {
   cursor: pointer;
 }
 
-.all-active {
+.all-active,
+.btn-active {
   border-bottom: 6px solid #333;
 }
 
@@ -96,4 +101,8 @@ code {
 
 .girls-active {
   border-bottom: 6px solid #3066BE;
+}
+
+.sort-buttons {
+  margin: 2rem 0;
 }

@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
+
 import DisplayName from './DisplayName';
 import Search from './Search';
 import Favourites from './Favourites';
 import GenderFilter from './GenderFilter';
-import babyNamesData from './babyNamesData.json';
+import SortButtons from './SortButtons';
 import useLocalStorage from './useLocalStorage';
-
+import babyNamesData from './babyNamesData.json';
+import { sortByName, filterByName, shuffle } from './helpers';
 import './App.css';
 
 const App = () => {
   const [searchValue, setSearchValue] = useState('');
   const [favourites, setFavourites] = useLocalStorage('favouriteBabies');
-  const [babyNames, setBabyNames] = useState(babyNamesData);
+  const [babyNames, setBabyNames] = useState(sortByName(babyNamesData));
+
   const handleSearch = (e) => {
     setSearchValue(e.target.value.toLowerCase());
   };
@@ -51,13 +54,17 @@ const App = () => {
     setSelected('girls');
   };
 
-  const filterAndSort = () => {
-    return babyNames
-      .filter((baby) => baby.name.toLowerCase().includes(searchValue))
-      .sort((a, b) => a.name.localeCompare(b.name));
+  const shuffleNames = (setSortBy) => {
+    setSortBy('shuffle');
+    setBabyNames(shuffle(babyNames));
   };
 
-  const babyNamesForDisplay = filterAndSort();
+  const handleSortByName = (setSortBy) => {
+    setSortBy('name');
+    setBabyNames(sortByName(babyNames));
+  };
+
+  const babyNamesForDisplay = filterByName(babyNames, searchValue);
 
   return (
     <div className="App">
@@ -72,6 +79,11 @@ const App = () => {
       <Favourites
         favourites={favourites}
         handleClick={handleRemoveFromFavourites}
+      />
+      <hr />
+      <SortButtons
+        shuffleNames={shuffleNames}
+        handleSortByName={handleSortByName}
       />
       <ul className="baby-names">
         {babyNamesForDisplay.length > 0 ? (
