@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DisplayName from './DisplayName';
 import Search from './Search';
 import Favourites from './Favourites';
+import GenderFilter from './GenderFilter';
 import babyNamesData from './babyNamesData.json';
 
 import './App.css';
@@ -9,6 +10,7 @@ import './App.css';
 const App = () => {
   const [searchValue, setSearchValue] = useState('');
   const [favourites, setFavourites] = useState([]);
+  const [babyNames, setBabyNames] = useState(babyNamesData);
 
   const handleSearch = (e) => {
     setSearchValue(e.target.value.toLowerCase());
@@ -32,18 +34,45 @@ const App = () => {
     setFavourites(filteredFavourites);
   };
 
+  const handleShowAll = () => {
+    setBabyNames(babyNamesData);
+  };
+
+  const handleShowBoys = () => {
+    const boys = babyNamesData.filter((baby) => baby.sex === 'm');
+    setBabyNames(boys);
+  };
+
+  const handleShowGirls = () => {
+    const girls = babyNamesData.filter((baby) => baby.sex === 'f');
+    setBabyNames(girls);
+  };
+
+  const filterAndSort = () => {
+    return babyNames
+      .filter((baby) => baby.name.toLowerCase().includes(searchValue))
+      .sort((a, b) => a.name.localeCompare(b.name));
+  };
+
+  const babyNamesForDisplay = filterAndSort();
+
   return (
     <div className="App">
-      <Search handleSearch={handleSearch} />
+      <div className="search-filter">
+        <Search handleSearch={handleSearch} />
+        <GenderFilter
+          handleShowAll={handleShowAll}
+          handleShowBoys={handleShowBoys}
+          handleShowGirls={handleShowGirls}
+        />
+      </div>
       <Favourites
         favourites={favourites}
         handleClick={handleRemoveFromFavourites}
       />
       <ul className="baby-names">
-        {babyNamesData
-          .filter((baby) => baby.name.toLowerCase().includes(searchValue))
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .map(({ id, name, sex }) => (
+        {babyNamesForDisplay.length > 0 ? (
+          babyNamesForDisplay.map(({ id, name, sex }) => (
             <DisplayName
               key={id}
               id={id}
@@ -51,7 +80,10 @@ const App = () => {
               sex={sex}
               handleClick={handleAddToFavourites}
             />
-          ))}
+          ))
+        ) : (
+          <div>No matches found.</div>
+        )}
       </ul>
     </div>
   );
