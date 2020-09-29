@@ -19,7 +19,7 @@ code {
 
 .baby-names {
   margin: 0;
-  padding: 0;
+  padding: 3rem 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -34,19 +34,33 @@ code {
 
 .m {
   background-color: #93A392;
-  color: #fff;
 }
 
 .f {
   background-color: #3066BE;
+}
+
+.f,
+.m {
   color: #fff;
 }
 
+.f,
+.m:hover {
+  cursor: pointer;
+  ;
+}
+
 .search-input {
-  margin: 5rem 0;
+  margin: 2rem 0 3rem 0;
   padding: 0.5em 1em;
   font-size: 1rem;
   width: 18.75rem;
   border-radius: 5px;
   border-color: #3066BE;
+}
+
+.favourite-title {
+  font-size: 2rem;
+  color: #333;
 }

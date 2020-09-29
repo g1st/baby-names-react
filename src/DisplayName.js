@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const DisplayName = ({ name, sex }) => {
+const DisplayName = ({ id, name, sex, handleClick }) => {
   return (
-    <li className={sex}>
+    <li className={sex} onClick={() => handleClick(id)}>
       {name}
-    </li >
-  )
-}
+    </li>
+  );
+};
 
-export default DisplayName
+export default DisplayName;
