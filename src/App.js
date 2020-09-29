@@ -1,24 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+import DisplayName from './DisplayName';
+import babyNamesData from './babyNamesData.json';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul className="baby-names">
+        {babyNamesData.sort((a, b) => a.name.localeCompare(b.name)).map(({ id, name, sex }) => <DisplayName key={id} name={name} sex={sex} />)}
+      </ul>
     </div>
   );
 }

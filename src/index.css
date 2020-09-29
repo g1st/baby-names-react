@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.baby-names {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.baby-names>li {
+  margin: 0.2rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.m {
+  background-color: #93A392;
+  color: #fff;
+}
+
+.f {
+  background-color: #3066BE;
+  color: #fff;
+}
