@@ -4,14 +4,14 @@ import Search from './Search';
 import Favourites from './Favourites';
 import GenderFilter from './GenderFilter';
 import babyNamesData from './babyNamesData.json';
+import useLocalStorage from './useLocalStorage';
 
 import './App.css';
 
 const App = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useLocalStorage('favouriteBabies');
   const [babyNames, setBabyNames] = useState(babyNamesData);
-
   const handleSearch = (e) => {
     setSearchValue(e.target.value.toLowerCase());
   };
