@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+.App {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 .baby-names {
   margin: 0;
   padding: 0;
@@ -35,4 +40,13 @@ code {
 .f {
   background-color: #3066BE;
   color: #fff;
+}
+
+.search-input {
+  margin: 5rem 0;
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  width: 18.75rem;
+  border-radius: 5px;
+  border-color: #3066BE;
 }
