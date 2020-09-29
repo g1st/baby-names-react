@@ -56,10 +56,8 @@ hr {
 
 .search-input {
   padding: 0.5em 1em;
-  margin-right: 2rem;
-  ;
+  margin: .75rem .25rem;
   font-size: 1rem;
-  width: 18.75rem;
   border-radius: 5px;
   border-color: #3066BE;
 }
@@ -71,8 +69,10 @@ hr {
 
 .search-filter {
   display: flex;
-  margin: 2rem 0 3rem 0;
+  margin: 2rem auto 3rem auto;
   justify-content: center;
+  flex-wrap: wrap;
+  max-width: 700px;
 }
 
 .btn-group {
@@ -81,7 +81,7 @@ hr {
 }
 
 .btn {
-  margin: 0 .25rem;
+  margin: .75rem .25rem;
   padding: 0.5em 1em;
 }
 
