@@ -85,3 +85,15 @@ code {
 .filter-button:active {
   cursor: pointer;
 }
+
+.all-active {
+  border-bottom: 6px solid #333;
+}
+
+.boys-active {
+  border-bottom: 6px solid #93A392;
+}
+
+.girls-active {
+  border-bottom: 6px solid #3066BE;
+}

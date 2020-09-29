@@ -34,18 +34,21 @@ const App = () => {
     setFavourites(filteredFavourites);
   };
 
-  const handleShowAll = () => {
+  const handleShowAll = (setSelected) => {
     setBabyNames(babyNamesData);
+    setSelected('all');
   };
 
-  const handleShowBoys = () => {
+  const handleShowBoys = (setSelected) => {
     const boys = babyNamesData.filter((baby) => baby.sex === 'm');
     setBabyNames(boys);
+    setSelected('boys');
   };
 
-  const handleShowGirls = () => {
+  const handleShowGirls = (setSelected) => {
     const girls = babyNamesData.filter((baby) => baby.sex === 'f');
     setBabyNames(girls);
+    setSelected('girls');
   };
 
   const filterAndSort = () => {
